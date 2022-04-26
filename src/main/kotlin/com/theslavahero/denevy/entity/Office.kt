@@ -12,6 +12,6 @@ data class Office(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
     val cabinetNumber: Int,
-    @OneToMany
+    @OneToMany(mappedBy = "officeId")
     val reservations: List<Reservation>
 )
