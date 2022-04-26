@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController
  * Created by theslavahero on 26.04.22
  */
 @RestController
-@RequestMapping("/api/office")
-class OfficeController {
+@RequestMapping("/api/user")
+class UserController {
+
 }
