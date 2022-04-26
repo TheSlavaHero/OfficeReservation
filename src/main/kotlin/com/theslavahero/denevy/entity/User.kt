@@ -7,8 +7,12 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "users")
-data class User(@Id
-                @GeneratedValue(strategy = GenerationType.IDENTITY)
-                val id:Long?,
-                val name:String,
-                val surname:String)
+data class User(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long?,
+    val name: String,
+    val surname: String,
+    @OneToMany
+    val reservations: List<Reservation>
+)
