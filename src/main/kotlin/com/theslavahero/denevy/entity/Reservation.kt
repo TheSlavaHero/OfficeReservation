@@ -9,7 +9,7 @@ import javax.persistence.*
 @Table(name = "reservations")
 data class Reservation(@Id
                        @GeneratedValue(strategy = GenerationType.IDENTITY)
-                       val id: Int?,
+                       val id: Long?,
                        val userId: Int,
                        val officeId: Int,
                        val reservationStart: String,

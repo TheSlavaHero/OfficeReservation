@@ -9,5 +9,5 @@ import javax.persistence.*
 @Table(name = "office")
 data class Office(@Id
                   @GeneratedValue(strategy = GenerationType.IDENTITY)
-                  val id:Int?,
+                  val id:Long?,
                   val cabinetNumber:Int)
