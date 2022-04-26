@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController
  * Created by theslavahero on 26.04.22
  */
 @RestController
-@RequestMapping("/api/user")
-class UserController {
+@RequestMapping("/api/reservation")
+class ReservationController {
 
-    //get all info about user
+    //create and save reservation
 
-    //create new user
+    //delete reservation
 
-    //delete user
+    //get info about reservation
 
     //think about all possible exceptions
 }

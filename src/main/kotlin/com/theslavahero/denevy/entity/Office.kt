@@ -1,5 +1,6 @@
 package com.theslavahero.denevy.entity
 
+import java.util.*
 import javax.persistence.*
 
 /**
@@ -14,4 +15,8 @@ data class Office(
     val cabinetNumber: Int,
     @OneToMany(mappedBy = "officeId")
     val reservations: List<Reservation>
-)
+) {
+    constructor(cabinetNumber: Int) : this(null, cabinetNumber, Collections.emptyList()) {
+
+    }
+}

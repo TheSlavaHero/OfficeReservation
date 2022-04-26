@@ -9,4 +9,15 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/office")
 class OfficeController {
+
+
+    //getAllReservationForThisOffice
+
+    //getAllReservationForThisTime
+
+    //getFreeTimeForThisOfficeForThisDay
+
+    //getFreeTimeForThisOfficeForThisWeek
+
+    //think about all possible exceptions
 }
