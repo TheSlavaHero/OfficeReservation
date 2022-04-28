@@ -11,12 +11,11 @@ import javax.persistence.*
 class Office(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
-    val cabinetNumber: Int,
+    private val id: Long?,
+    var cabinetNumber: Int,
     @OneToMany(mappedBy = "officeId")
-    val reservations: List<Reservation>
+    var reservations: List<Reservation>
 ) {
-    constructor(cabinetNumber: Int) : this(null, cabinetNumber, Collections.emptyList()) {
+    constructor(cabinetNumber: Int) : this(null, cabinetNumber, Collections.emptyList())
 
-    }
 }

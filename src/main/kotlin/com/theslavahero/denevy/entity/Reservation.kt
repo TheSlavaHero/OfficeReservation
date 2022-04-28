@@ -10,13 +10,13 @@ import javax.persistence.*
 class Reservation(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
+    private val id: Long?,
     @ManyToOne
     @JoinColumn(name = "user_id")
-    val userId: User,
+    private var userId: User,
     @ManyToOne
     @JoinColumn(name = "office_id")
-    val officeId: Office,
-    val reservationStart: String,
-    val reservationFinish: String
+    private var officeId: Office,
+    private var reservationStart: String,
+    private var reservationFinish: String
 )

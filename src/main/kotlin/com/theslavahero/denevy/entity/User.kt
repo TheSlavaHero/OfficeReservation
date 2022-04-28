@@ -12,10 +12,10 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long?,
-    private val name: String,
-    private val surname: String,
+    private var name: String,
+    private var surname: String,
     @OneToMany(mappedBy = "userId")
-    private val reservations: List<Reservation>
+    private var reservations: List<Reservation>
 ) {
     constructor(name: String, surname: String, reservations: List<Reservation>)
             : this(null, name, surname, reservations)
