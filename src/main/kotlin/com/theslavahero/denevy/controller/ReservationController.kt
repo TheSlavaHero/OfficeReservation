@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/reservation")
 class ReservationController {
 
-    //create and save reservation
+    //create and save reservation//POST
 
-    //delete reservation
+    //delete reservation//DELETE
 
-    //get info about reservation
+    //get info about reservation//GET
 
     //think about all possible exceptions
 }

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController
 class OfficeController {
 
 
-    //getAllReservationForThisOffice
+    //getAllReservationForThisOffice//GET
 
-    //getAllReservationForThisTime
+    //getAllReservationForThisTime//GET
 
-    //getFreeTimeForThisOfficeForThisDay
+    //getFreeTimeForThisOfficeForThisDay//GET
 
-    //getFreeTimeForThisOfficeForThisWeek
+    //getFreeTimeForThisOfficeForThisWeek//GET
 
     //think about all possible exceptions
 }

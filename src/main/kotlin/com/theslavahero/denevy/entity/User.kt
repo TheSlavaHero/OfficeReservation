@@ -8,15 +8,18 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "users")
-data class User(
+class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
-    val name: String,
-    val surname: String,
+    private val id: Long?,
+    private val name: String,
+    private val surname: String,
     @OneToMany(mappedBy = "userId")
-    val reservations: List<Reservation>
+    private val reservations: List<Reservation>
 ) {
+    constructor(name: String, surname: String, reservations: List<Reservation>)
+            : this(null, name, surname, reservations)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false

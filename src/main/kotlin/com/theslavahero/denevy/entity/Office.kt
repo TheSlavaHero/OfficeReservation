@@ -8,7 +8,7 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "offices")
-data class Office(
+class Office(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,

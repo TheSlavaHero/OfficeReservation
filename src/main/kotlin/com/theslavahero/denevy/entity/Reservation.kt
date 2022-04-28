@@ -7,7 +7,7 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "reservations")
-data class Reservation(
+class Reservation(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
