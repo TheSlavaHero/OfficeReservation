@@ -7,7 +7,7 @@ import javax.persistence.*
  * Created by theslavahero on 26.04.22
  */
 @Entity
-@Table(name = "office")
+@Table(name = "offices")
 data class Office(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
