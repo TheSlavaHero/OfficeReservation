@@ -13,9 +13,10 @@ class Office(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long?,
     var cabinetNumber: Int,
-    @OneToMany(mappedBy = "officeId")
+    @OneToMany(mappedBy = "office")
     var reservations: List<Reservation>
 ) {
     constructor(cabinetNumber: Int) : this(null, cabinetNumber, Collections.emptyList())
+    constructor(cabinetNumber: Int, reservations: List<Reservation>) : this(null, cabinetNumber, reservations)
 
 }

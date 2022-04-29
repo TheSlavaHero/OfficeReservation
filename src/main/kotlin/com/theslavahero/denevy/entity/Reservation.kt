@@ -1,5 +1,6 @@
 package com.theslavahero.denevy.entity
 
+import java.util.*
 import javax.persistence.*
 
 /**
@@ -16,7 +17,8 @@ class Reservation(
     private var userId: User,
     @ManyToOne
     @JoinColumn(name = "office_id")
-    private var officeId: Office,
-    private var reservationStart: String,
-    private var reservationFinish: String
-)
+    private var office: Office,
+    private var reservationStart: Date,
+    private var reservationFinish: Date
+) {
+}

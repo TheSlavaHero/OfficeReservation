@@ -1,6 +1,7 @@
 package com.theslavahero.denevy.entity
 
 import org.hibernate.Hibernate
+import java.util.*
 import javax.persistence.*
 
 /**
@@ -17,6 +18,9 @@ class User(
     @OneToMany(mappedBy = "userId")
     private var reservations: List<Reservation>
 ) {
+    constructor(name: String, surname: String)
+            : this(null, name, surname, Collections.emptyList())
+
     constructor(name: String, surname: String, reservations: List<Reservation>)
             : this(null, name, surname, reservations)
 
