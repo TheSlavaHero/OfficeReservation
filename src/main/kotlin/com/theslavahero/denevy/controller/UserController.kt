@@ -1,6 +1,7 @@
 package com.theslavahero.denevy.controller
 
 import com.theslavahero.denevy.entity.User
+import com.theslavahero.denevy.entity.dto.UserDTO
 import com.theslavahero.denevy.entity.repository.UserRepository
 import mu.KotlinLogging
 import org.springframework.http.HttpStatus
@@ -23,9 +24,9 @@ class UserController(val userRepository: UserRepository) {
     }
 
     @PutMapping("/create")
-    fun createUser(@RequestBody user: User): ResponseEntity<String> {//throw an exception if user has a preset id
-        userRepository.save(user)
-        log.info { "Creating new user: $user" }
+    fun createUser(@RequestBody userDTO: UserDTO): ResponseEntity<String> {//throw an exception if user has a preset id
+        userRepository.save(userDTO.convert())
+        log.info { "Creating new user: $userDTO" }
         return ResponseEntity("A new User has been successfully created", HttpStatus.CREATED)
     }
 
