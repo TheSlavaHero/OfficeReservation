@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component
 class OfficeConfiguration {
     @Bean
     fun officeInitialization(officeRepository: OfficeRepository) = CommandLineRunner {
-        officeRepository.save(Office(1L))
-        officeRepository.save(Office(2L))
-        officeRepository.save(Office(3L))
-        officeRepository.save(Office(4L))
+        officeRepository.save(Office(1L, 1))
+        officeRepository.save(Office(2L, 2))
+        officeRepository.save(Office(3L, 3))
+        officeRepository.save(Office(4L, 4))
     }
 }
