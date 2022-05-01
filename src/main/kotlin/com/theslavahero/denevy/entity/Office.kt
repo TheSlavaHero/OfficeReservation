@@ -1,6 +1,5 @@
 package com.theslavahero.denevy.entity
 
-import java.util.*
 import javax.persistence.*
 
 /**
@@ -11,13 +10,16 @@ import javax.persistence.*
 class Office(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long?,
+    val id: Long?,
     var cabinetNumber: Int?,
     @OneToMany(mappedBy = "office")
     var reservations: List<Reservation>?
 ) {
     constructor(id: Long?) : this(id, null, null)
-    constructor(cabinetNumber: Int) : this(null, cabinetNumber, Collections.emptyList())
-    constructor(cabinetNumber: Int, reservations: List<Reservation>) : this(null, cabinetNumber, reservations)
+    constructor(id: Long?, cabinetNumber: Int) : this(id, cabinetNumber, null)
+
+    override fun toString(): String {
+        return "Office(id=$id, cabinetNumber=$cabinetNumber, reservations=$reservations)"
+    }
 
 }

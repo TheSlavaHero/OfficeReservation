@@ -22,6 +22,9 @@ class User(
     constructor(name: String, surname: String)
             : this(null, name, surname, Collections.emptyList())
 
+    constructor(id: Long?, name: String, surname: String)
+            : this(id, name, surname, Collections.emptyList())
+
     constructor(name: String, surname: String, reservations: List<Reservation>)
             : this(null, name, surname, reservations)
 

@@ -11,17 +11,17 @@ import javax.persistence.*
 class Reservation(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long?,
+    var id: Long?,
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private var userId: User,
+    var userId: User,
     @ManyToOne
     @JoinColumn(name = "office_id")
-    private var office: Office,
-    private var reservationStart: LocalDateTime,
-    private var reservationFinish: LocalDateTime
+    var office: Office,
+    var reservationStart: LocalDateTime,
+    var reservationFinish: LocalDateTime
 ) {
     override fun toString(): String {
-        return "Reservation(id=$id, userId=$userId, office=$office, reservationStart=$reservationStart, reservationFinish=$reservationFinish)"
+        return "Reservation(id=$id, userId=${userId.id}, office=${office.id}, reservationStart=$reservationStart, reservationFinish=$reservationFinish)"
     }
 }
