@@ -10,15 +10,20 @@ import java.time.LocalDateTime
  */
 @Repository
 interface ReservationRepository : JpaRepository<Reservation, Long> {
-    //finds all reservations (for current Office by id) that start between dateStart and dateFinish
-    fun findAllByOfficeIdAndReservationStartAfterAndReservationStartBefore(
+    fun findAllByOfficeIdAndReservationStartBetween(
         office_id: Long,
-        dateStart: LocalDateTime,
-        dateFinish: LocalDateTime
+        reservationStart: LocalDateTime,
+        reservationStart2: LocalDateTime
     ): List<Reservation>
 
-    //finds all reservations (for current Office by id) that finish between dateStart and dateFinish
-    fun findAllByOfficeIdAndReservationFinishAfterAndReservationFinishBefore(
+    fun findAllByOfficeIdAndReservationFinishBetween(
+        office_id: Long,
+        reservationStart: LocalDateTime,
+        reservationStart2: LocalDateTime
+    ): List<Reservation>
+
+    //finds all reservations (for current Office by id) that start before dateStart and finish after dateFinish
+    fun findAllByOfficeIdAndReservationStartBeforeAndReservationFinishAfter(
         office_id: Long,
         dateStart: LocalDateTime,
         dateFinish: LocalDateTime
