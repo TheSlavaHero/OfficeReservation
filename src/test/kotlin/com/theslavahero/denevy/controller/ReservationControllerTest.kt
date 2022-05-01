@@ -18,10 +18,8 @@ import javax.transaction.Transactional
 @Transactional
 class ReservationControllerTest(
 
-    @Autowired
-    private val reservationController: ReservationController,
-    @Autowired
-    private val reservationRepository: ReservationRepository
+    @Autowired private val reservationController: ReservationController,
+    @Autowired private val reservationRepository: ReservationRepository
 ) {
     private val log = KotlinLogging.logger {}
 
@@ -43,15 +41,17 @@ class ReservationControllerTest(
 
     @Test
     fun checkCorrectTime() {
+        var start: LocalDateTime
+        var finish: LocalDateTime
+        var reservationDto: ReservationDTO
         for (startHours in 0..23) {
             for (finishHours in 0..23) {
-                val start: LocalDateTime = LocalDateTime.now().withHour(startHours)
-                val finish: LocalDateTime = LocalDateTime.now().withHour(finishHours)
-                val reservationDto = ReservationDTO(start, finish)
-                if (startHours < 8 || startHours > 16 ||
-                    finishHours < 8 || finishHours > 16
+                start = LocalDateTime.now().withHour(startHours)
+                finish = LocalDateTime.now().withHour(finishHours)
+                reservationDto = ReservationDTO(start, finish)
+                if (startHours < 8 || startHours > 16 || finishHours < 8 || finishHours > 16 ||
+                    reservationDto.reservationStart > reservationDto.reservationFinish
                 ) {
-                    log.info { "Exception should be thrown with: Start = $startHours, finish = $finishHours" }
                     assertThrows<HttpClientErrorException> { reservationController.checkCorrectTime(reservationDto) }
                 } else reservationController.checkCorrectTime(reservationDto)
             }

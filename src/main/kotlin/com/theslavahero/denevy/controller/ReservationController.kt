@@ -24,6 +24,10 @@ class ReservationController(val reservationRepository: ReservationRepository) {
     }
 
     fun checkCorrectTime(reservationDTO: ReservationDTO) {
+        if (reservationDTO.reservationStart > reservationDTO.reservationFinish)
+            throw HttpClientErrorException(
+                HttpStatus.UNPROCESSABLE_ENTITY, "Start of the reservation can not be after it's finish"
+            )
         val startHours: Int = reservationDTO.reservationStart.hour
         val finishHours: Int = reservationDTO.reservationFinish.hour
         if (startHours < officeReservationStartTime || startHours > officeReservationEndTime ||
