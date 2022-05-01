@@ -1,6 +1,6 @@
 package com.theslavahero.denevy.entity
 
-import java.util.*
+import java.time.LocalDateTime
 import javax.persistence.*
 
 /**
@@ -18,7 +18,7 @@ class Reservation(
     @ManyToOne
     @JoinColumn(name = "office_id")
     private var office: Office,
-    private var reservationStart: Date,
-    private var reservationFinish: Date
+    private var reservationStart: LocalDateTime,
+    private var reservationFinish: LocalDateTime
 ) {
 }
