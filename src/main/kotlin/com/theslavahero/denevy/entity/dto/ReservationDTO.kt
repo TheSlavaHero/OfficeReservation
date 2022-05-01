@@ -1,6 +1,8 @@
 package com.theslavahero.denevy.entity.dto
 
+import com.theslavahero.denevy.entity.Office
 import com.theslavahero.denevy.entity.Reservation
+import com.theslavahero.denevy.entity.User
 import java.time.LocalDateTime
 
 /**
@@ -12,15 +14,9 @@ class ReservationDTO(
     var reservationStart: LocalDateTime,
     var reservationFinish: LocalDateTime
 ) : DTO(), Convertable<Reservation> {
-    constructor(reservationStart: LocalDateTime, reservationFinish: LocalDateTime) : this(
-        null,
-        null,
-        reservationStart,
-        reservationFinish
-    )
 
     override fun convert(): Reservation {
-        TODO("Not yet implemented")
+        return Reservation(null, User(userId), Office(officeId), reservationStart, reservationFinish)
     }
 
 

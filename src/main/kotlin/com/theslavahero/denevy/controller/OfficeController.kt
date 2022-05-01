@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 class OfficeController(val officeRepository: OfficeRepository) {
 
     @GetMapping("/{id}/reservations")
-    fun getAllReservations(@PathVariable id: Long): List<Reservation> {
+    fun getAllReservations(@PathVariable id: Long): List<Reservation>? {
         return officeRepository.getById(id).reservations
     }
     //getAllReservationForThisTime//GET

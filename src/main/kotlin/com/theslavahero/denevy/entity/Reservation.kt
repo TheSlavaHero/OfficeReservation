@@ -21,4 +21,7 @@ class Reservation(
     private var reservationStart: LocalDateTime,
     private var reservationFinish: LocalDateTime
 ) {
+    override fun toString(): String {
+        return "Reservation(id=$id, userId=$userId, office=$office, reservationStart=$reservationStart, reservationFinish=$reservationFinish)"
+    }
 }
