@@ -4,9 +4,11 @@ import com.theslavahero.denevy.entity.User
 import com.theslavahero.denevy.entity.dto.UserDTO
 import com.theslavahero.denevy.entity.repository.UserRepository
 import mu.KotlinLogging
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.persistence.EntityNotFoundException
 
 /**
  * Created by theslavahero on 26.04.22
@@ -25,9 +27,9 @@ class UserController(val userRepository: UserRepository) {
 
     @PutMapping("/create")
     fun createUser(@RequestBody userDTO: UserDTO): ResponseEntity<String> {//throw an exception if user has a preset id
-        userRepository.save(userDTO.convert())
+        val user = userRepository.save(userDTO.convert())
         log.info { "Creating new user: $userDTO" }
-        return ResponseEntity("A new User has been successfully created", HttpStatus.CREATED)
+        return ResponseEntity("A new user with id = ${user.id} has been successfully created", HttpStatus.CREATED)
     }
 
     @DeleteMapping("/delete/{id}")//exception if this id does not exist//204
@@ -36,5 +38,9 @@ class UserController(val userRepository: UserRepository) {
         log.info { "Deleting user with id: $id" }
         return userRepository.deleteById(id)
     }
-    //think about all possible exceptions
+
+    @ExceptionHandler(value = [(EntityNotFoundException::class), (EmptyResultDataAccessException::class)])
+    fun handleNotFoundEntity(): ResponseEntity<String> {
+        return ResponseEntity("Entity with this id was not found", HttpStatus.NOT_FOUND)
+    }
 }

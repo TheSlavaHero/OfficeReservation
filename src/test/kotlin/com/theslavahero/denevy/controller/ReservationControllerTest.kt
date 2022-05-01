@@ -4,7 +4,6 @@ import com.theslavahero.denevy.entity.User
 import com.theslavahero.denevy.entity.dto.ReservationDTO
 import com.theslavahero.denevy.entity.repository.ReservationRepository
 import com.theslavahero.denevy.entity.repository.UserRepository
-import mu.KotlinLogging
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -26,11 +25,10 @@ class ReservationControllerTest(
     @Autowired private val reservationRepository: ReservationRepository,
     @Autowired private val userRepository: UserRepository
 ) {
-    private val log = KotlinLogging.logger {}
 
     @BeforeEach
     fun createUser() {
-        userRepository.save(User("Test", "User"))
+        userRepository.save(User(1L, "Test", "User"))
     }
 
     @Test
@@ -83,8 +81,9 @@ class ReservationControllerTest(
 
     @Test
     fun createReservationAndCheckColisions() {
+        val user = userRepository.getByName("Test")
         val reservationDTO = ReservationDTO(
-            1, 1,
+            1, user.id,
             LocalDateTime.now().withHour(12),
             LocalDateTime.now().withHour(15)
         )
@@ -116,24 +115,26 @@ class ReservationControllerTest(
 
     @Test
     fun deleteReservation() {
+        val user = userRepository.getByName("Test")
         val reservationDTO = ReservationDTO(
-            1, 1,
+            1, user.id,
             LocalDateTime.now().withHour(12),
             LocalDateTime.now().withHour(15)
         )
         reservationController.createReservation(reservationDTO)
-        reservationController.deleteReservation(1)
+        reservationController.deleteReservation(reservationRepository.findAll()[0].id!!)
     }
 
     @Test
     fun getReservation() {
+        val user = userRepository.getByName("Test")
         val reservationDTO = ReservationDTO(
-            1, 1,
+            1, user.id,
             LocalDateTime.now().withHour(12),
             LocalDateTime.now().withHour(15)
         )
         reservationController.createReservation(reservationDTO)
-        reservationController.getReservation(1)
+        reservationController.getReservation(reservationRepository.findAll()[0].id!!)
     }
 
     @Test

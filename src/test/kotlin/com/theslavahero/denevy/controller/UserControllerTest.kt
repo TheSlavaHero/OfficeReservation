@@ -3,7 +3,7 @@ package com.theslavahero.denevy.controller
 import com.theslavahero.denevy.entity.User
 import com.theslavahero.denevy.entity.dto.UserDTO
 import com.theslavahero.denevy.entity.repository.UserRepository
-import org.junit.Before
+import org.junit.After
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -25,11 +25,6 @@ class UserControllerTest(
     @Autowired
     private val userRepository: UserRepository
 ) {
-    @Before
-    fun createUser() {
-        val userDTO = UserDTO("test", "user")
-        userController.createUser(userDTO)
-    }
 
     @Test
     fun testCreateUser() {
@@ -59,4 +54,8 @@ class UserControllerTest(
         userRepository.deleteAllByName("test")
     }
 
+    @After
+    fun deleteAllUsers() {
+        userRepository.deleteAll()
+    }
 }
