@@ -12,9 +12,9 @@ import javax.persistence.*
 class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long?,
-    private var name: String,
-    private var surname: String,
+    val id: Long?,
+    var name: String,
+    var surname: String,
     @OneToMany(mappedBy = "userId")
     private var reservations: List<Reservation>
 ) {
