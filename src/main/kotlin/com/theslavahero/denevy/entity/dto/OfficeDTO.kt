@@ -9,13 +9,9 @@ class OfficeDTO(
     private val id: Long?,
     var cabinetNumber: Int,
     var reservationIds: List<Long>
-) : DTO(), Convertable<OfficeDTO, Office> {
-    override fun convertTo(firstObject: OfficeDTO): Office {
+) : DTO(), Convertable<Office> {
+    override fun convert(): Office {
 //        return Office(cabinetNumber, reservationIds.map { return Reservation() }
-        TODO("Not yet implemented")
-    }
-
-    override fun convertFrom(secondObject: Office): OfficeDTO {
         TODO("Not yet implemented")
     }
 }

@@ -5,8 +5,7 @@ package com.theslavahero.denevy.entity.dto
  * O - object
  * D - DTO
  */
-interface Convertable<O, D> {
-    fun convertTo(firstObject: O): D
-    fun convertFrom(secondObject: D): O
+interface Convertable<E> {
+    fun convert(): E
 
 }
